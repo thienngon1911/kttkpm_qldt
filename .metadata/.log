@@ -21,3 +21,110 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-05-22 23:13:21.431
+!MESSAGE Failed to find a compatible VM for environment id 'JavaSE-21', falling back to workspace default
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-05-22 23:13:22.606
+!MESSAGE JavaBuilder handling CoreException while building: service-phone
+!STACK 1
+org.eclipse.core.runtime.CoreException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:124)
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.<init>(ClasspathJrtWithReleaseOption.java:82)
+	at org.eclipse.jdt.internal.core.builder.ClasspathLocation.forJrtSystem(ClasspathLocation.java:176)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.computeClasspathLocations(NameEnvironment.java:332)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.<init>(NameEnvironment.java:62)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.initializeBuilder(JavaBuilder.java:666)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:185)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.IllegalArgumentException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:123)
+	... 19 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 0 2024-05-22 23:13:22.607
+!MESSAGE release 21 is not found in the system
+!STACK 0
+java.lang.IllegalArgumentException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:123)
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.<init>(ClasspathJrtWithReleaseOption.java:82)
+	at org.eclipse.jdt.internal.core.builder.ClasspathLocation.forJrtSystem(ClasspathLocation.java:176)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.computeClasspathLocations(NameEnvironment.java:332)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.<init>(NameEnvironment.java:62)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.initializeBuilder(JavaBuilder.java:666)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:185)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-05-22 23:13:24.010
+!MESSAGE JavaBuilder handling CoreException while building: service-phone
+!STACK 1
+org.eclipse.core.runtime.CoreException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:124)
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.<init>(ClasspathJrtWithReleaseOption.java:82)
+	at org.eclipse.jdt.internal.core.builder.ClasspathLocation.forJrtSystem(ClasspathLocation.java:176)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.computeClasspathLocations(NameEnvironment.java:332)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.<init>(NameEnvironment.java:62)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.initializeBuilder(JavaBuilder.java:666)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:185)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.IllegalArgumentException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:123)
+	... 19 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 0 2024-05-22 23:13:24.011
+!MESSAGE release 21 is not found in the system
+!STACK 0
+java.lang.IllegalArgumentException: release 21 is not found in the system
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.initialize(ClasspathJrtWithReleaseOption.java:123)
+	at org.eclipse.jdt.internal.core.builder.ClasspathJrtWithReleaseOption.<init>(ClasspathJrtWithReleaseOption.java:82)
+	at org.eclipse.jdt.internal.core.builder.ClasspathLocation.forJrtSystem(ClasspathLocation.java:176)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.computeClasspathLocations(NameEnvironment.java:332)
+	at org.eclipse.jdt.internal.core.builder.NameEnvironment.<init>(NameEnvironment.java:62)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.initializeBuilder(JavaBuilder.java:666)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:185)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
