@@ -13,9 +13,9 @@ public class GatewayConfig {
         return builder.routes()
         		.route("service_authentication", r -> r.path("/authentication/**")
                         .uri("http://localhost:8081"))
-                .route("service_phone", r -> r.path("/phones/**")
+                .route("service_phone", r -> r.path("/phone/**")
                         .uri("http://localhost:8082"))
-                .route("service_order", r -> r.path("/orders/**")
+                .route("service_order", r -> r.path("/order/**")
                         .uri("http://localhost:8083"))
                 .build();
     }

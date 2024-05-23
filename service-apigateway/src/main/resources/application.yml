@@ -24,7 +24,7 @@ spring:
         - id: service_phone
           uri: http://localhost:8082
           predicates:
-            - Path=/phones/**
+            - Path=/phone/**
           metadata:
             cors:
               allowedOrigins: '*'
@@ -39,7 +39,7 @@ spring:
         - id: service_order
           uri: http://localhost:8083
           predicates:
-            - Path=/orders/**
+            - Path=/order/**
           metadata:
             cors:
               allowedOrigins: '*'
