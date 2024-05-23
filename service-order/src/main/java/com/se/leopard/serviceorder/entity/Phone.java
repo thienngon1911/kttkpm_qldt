@@ -1,4 +1,4 @@
-package com.se.leopard.servicephone.entity;
+package com.se.leopard.serviceorder.entity;
 
 import java.io.Serializable;
 
