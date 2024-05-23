@@ -17,6 +17,8 @@ public class GatewayConfig {
                         .uri("http://localhost:8082"))
                 .route("service_order", r -> r.path("/order/**")
                         .uri("http://localhost:8083"))
+                .route("serivce_rest-template", r -> r.path("/rest-template/**")
+                        .uri("http://localhost:8089"))
                 .build();
     }
 }
