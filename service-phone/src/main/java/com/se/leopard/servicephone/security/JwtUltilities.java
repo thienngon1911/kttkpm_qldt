@@ -69,7 +69,7 @@ public class JwtUltilities {
                 .compact();
     }
     
-    public String getMssvFromJwtToken(String token) {
+    public String getUsernameFromJwtToken(String token) {
         return Jwts.parserBuilder()
         		.setSigningKey(key())
         		.build()
