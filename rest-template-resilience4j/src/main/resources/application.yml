@@ -27,7 +27,13 @@ resilience4j:
     instances:
       RETRY_1:
         maxRetryAttempts: 5
-        waitDuration: 5s
+        waitDuration: 3s
+  ratelimiter:
+    instances:
+      RATE_LIMITER_1:
+        limitForPeriod: 5 # Số lượng yêu cầu tối đa trong mỗi khoảng thời gian
+        limitRefreshPeriod: 60s # Khoảng thời gian reset lại số lượng yêu cầu
+        timeoutDuration: 0 # Thời gian chờ trước khi ném ra lỗi nếu bị giới hạn
   timelimiter:
     instances:
       TIME_LIMITER_1:
