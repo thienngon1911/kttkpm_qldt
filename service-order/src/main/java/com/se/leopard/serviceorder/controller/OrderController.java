@@ -17,8 +17,6 @@ import com.se.leopard.serviceorder.entity.User;
 import com.se.leopard.serviceorder.repository.OrderRepository;
 import com.se.leopard.serviceorder.repository.UserRepository;
 
-import jakarta.validation.Valid;
-
 import com.se.leopard.serviceorder.repository.PhoneRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -34,7 +32,7 @@ public class OrderController {
 	private PhoneRepository phoneRepository;
 	
 	@PostMapping("/order")
-	public ResponseEntity<?> order(@Valid @RequestBody Map<String, Object> requestBody) {
+	public ResponseEntity<?> order(@RequestBody Map<String, Object> requestBody) {
 		
 		long userId = Long.parseLong(requestBody.get("userId").toString());
 		long phoneId = Long.parseLong(requestBody.get("phoneId").toString());
@@ -42,10 +40,10 @@ public class OrderController {
 		User user = userRepository.findById(userId).orElse(null);
 		Phone phone = phoneRepository.findById(phoneId).orElse(null);
 		Order order = Order
-				.builder()
-				.user(user)
-				.phone(phone)
-				.build();
+			.builder()
+			.user(user)
+			.phone(phone)
+			.build();
 		try {
 			Order orderSaved = orderRepository.save(order);
 			return ResponseEntity.ok(orderSaved);

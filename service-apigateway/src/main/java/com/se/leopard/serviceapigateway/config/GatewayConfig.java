@@ -12,13 +12,13 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
         		.route("service_authentication", r -> r.path("/authentication/**")
-                        .uri("http://localhost:8081"))
+                        .uri("http://service-authentication:8081"))
                 .route("service_phone", r -> r.path("/phone/**")
-                        .uri("http://localhost:8082"))
+                        .uri("http://service-phone:8082"))
                 .route("service_order", r -> r.path("/order/**")
-                        .uri("http://localhost:8083"))
+                        .uri("http://service-order:8083"))
                 .route("serivce_rest-template", r -> r.path("/rest-template/**")
-                        .uri("http://localhost:8089"))
+                        .uri("http://rest-template-resilience4j:8089"))
                 .build();
     }
 }

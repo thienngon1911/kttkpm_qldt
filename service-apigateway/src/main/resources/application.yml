@@ -7,7 +7,7 @@ spring:
     gateway:
       routes:
         - id: service_authentication
-          uri: http://localhost:8081
+          uri: http://service-authentication:8081
           predicates:
             - Path=/authentication/**
           metadata:
@@ -22,7 +22,7 @@ spring:
               maxAge: 3600
             
         - id: service_phone
-          uri: http://localhost:8082
+          uri: http://service-phone:8082
           predicates:
             - Path=/phone/**
           metadata:
@@ -37,7 +37,7 @@ spring:
               maxAge: 3600
             
         - id: service_order
-          uri: http://localhost:8083
+          uri: http://service-order:8083
           predicates:
             - Path=/order/**
           metadata:
@@ -52,7 +52,7 @@ spring:
               maxAge: 3600
               
         - id: serivce_rest-template
-          uri: http://localhost:8089
+          uri: http://rest-template-resilience4j:8089
           predicates:
             - Path=/rest-template/**
           metadata:
@@ -68,4 +68,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery-server:8761/eureka/

@@ -1,0 +1,114 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: qldt
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+    networks:
+      - phone-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - phone-network
+
+  discovery-server:
+    build:
+      context: ./discovery-server
+      dockerfile: Dockerfile
+    container_name: discovery-server
+    ports:
+      - "8761:8761"
+    networks:
+      - phone-network
+    depends_on:
+      - mysql
+      - redis
+
+  service-apigateway:
+    build:
+      context: ./service-apigateway
+      dockerfile: Dockerfile
+    container_name: service-apigateway
+    ports:
+      - "8080:8080"
+    networks:
+      - phone-network
+    depends_on:
+      - discovery-server
+
+  service-authentication:
+    build:
+      context: ./service-authentication
+      dockerfile: Dockerfile
+    container_name: service-authentication
+    ports:
+      - "8081:8081"
+    networks:
+      - phone-network
+    depends_on:
+      - discovery-server
+      - mysql
+
+  service-phone:
+    build:
+      context: ./service-phone
+      dockerfile: Dockerfile
+    container_name: service-phone
+    ports:
+      - "8082:8082"
+    networks:
+      - phone-network
+    depends_on:
+      - discovery-server
+      - mysql
+      - redis
+    environment:
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+
+  service-order:
+    build:
+      context: ./service-order
+      dockerfile: Dockerfile
+    container_name: service-order
+    ports:
+      - "8083:8083"
+    networks:
+      - phone-network
+    depends_on:
+      - discovery-server
+      - mysql
+
+  rest-template-resilience4j:
+    build:
+      context: ./rest-template-resilience4j
+      dockerfile: Dockerfile
+    container_name: rest-template-resilience4j
+    ports:
+      - "8089:8089"
+    networks:
+      - phone-network
+    depends_on:
+      - discovery-server
+      - service-apigateway
+      - service-authentication
+      - service-phone
+      - service-order
+
+volumes:
+  mysql_data:
+
+networks:
+  phone-network:
+    driver: bridge

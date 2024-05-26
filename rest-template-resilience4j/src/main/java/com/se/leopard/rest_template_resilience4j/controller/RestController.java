@@ -31,7 +31,7 @@ import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 @RequestMapping("/rest-template")
 public class RestController {
 	
-	private final String SERVICE_PHONE = "http://localhost:8082/phone";
+	private final String SERVICE_PHONE = "http://service-phone:8082/phone";
 	private int ATTEMP_RETRY = 1;
 	
 	@Autowired

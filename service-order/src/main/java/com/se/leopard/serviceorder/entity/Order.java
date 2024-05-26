@@ -36,10 +36,11 @@ import lombok.ToString;
 @ToString
 @Table(name = "order_table")
 public class Order implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2381566274228520218L;
+	private static final long serialVersionUID = -1877917115053458965L;
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
