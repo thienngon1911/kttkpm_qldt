@@ -3,14 +3,20 @@ package com.se.leopard.servicephone.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,6 +81,75 @@ public class PhoneController {
 			e.printStackTrace();
 			return new ArrayList<Phone>();
 		}
+	}
+	
+	@PutMapping("/update/{id}")
+	@CachePut("phones")
+	public ResponseEntity<?> updatePhone(@PathVariable Long id, @Valid @RequestBody Map<String, Object> requestBody) {
+	    try {
+	        Optional<Phone> optionalPhone = phoneRepository.findById(id);
+	        if (!optionalPhone.isPresent()) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Phone not found");
+	        }
+
+	        Phone phone = optionalPhone.get();
+	        if (requestBody.containsKey("brand")) {
+	            phone.setBrand(requestBody.get("brand").toString());
+	        }
+	        if (requestBody.containsKey("model")) {
+	            phone.setModel(requestBody.get("model").toString());
+	        }
+	        if (requestBody.containsKey("price")) {
+	            phone.setPrice(Double.parseDouble(requestBody.get("price").toString()));
+	        }
+	        if (requestBody.containsKey("stocks")) {
+	            phone.setStocks(Integer.parseInt(requestBody.get("stocks").toString()));
+	        }
+	        if (requestBody.containsKey("storage")) {
+	            phone.setStorage(Integer.parseInt(requestBody.get("storage").toString()));
+	        }
+	        if (requestBody.containsKey("ram")) {
+	            phone.setRam(Integer.parseInt(requestBody.get("ram").toString()));
+	        }
+	        if (requestBody.containsKey("color")) {
+	            phone.setColor(requestBody.get("color").toString());
+	        }
+	        if (requestBody.containsKey("operatingSystem")) {
+	            phone.setOperatingSystem(requestBody.get("operatingSystem").toString());
+	        }
+	        if (requestBody.containsKey("screenSize")) {
+	            phone.setScreenSize(Double.parseDouble(requestBody.get("screenSize").toString()));
+	        }
+	        if (requestBody.containsKey("batteryCapacity")) {
+	            phone.setBatteryCapacity(Integer.parseInt(requestBody.get("batteryCapacity").toString()));
+	        }
+	        if (requestBody.containsKey("cameraResolution")) {
+	            phone.setCameraResolution(Integer.parseInt(requestBody.get("cameraResolution").toString()));
+	        }
+
+	        phoneRepository.save(phone);
+	        return ResponseEntity.ok(phoneRepository.findAll());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating the phone");
+	    }
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	@CacheEvict(value = "phones", allEntries = true)
+	public ResponseEntity<?> deletePhone(@PathVariable Long id) {
+	    try {
+	        Optional<Phone> optionalPhone = phoneRepository.findById(id);
+	        if (!optionalPhone.isPresent()) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Phone not found");
+	        }
+
+	        phoneRepository.deleteById(id);
+	        return ResponseEntity.ok(phoneRepository.findAll());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting the phone");
+	    }
 	}
 	
 	@GetMapping("/generate")
